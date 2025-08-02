@@ -1,4 +1,35 @@
         /* Estilos específicos para la página de administración */
+        /* Estilos responsivos para pantallas de hasta 768px (móviles y tablets) */
+@media (max-width: 768px) {
+    
+    /* Ajusta el encabezado y el título */
+    .admin-header h1 {
+        font-size: 1.5rem;
+    }
+
+    /* Hace que los contenedores se apilen verticalmente */
+    .admin-content {
+        flex-direction: column;
+    }
+
+    /* Estilos para el formulario de agregar/editar productos */
+    .form-container {
+        padding: 15px;
+    }
+
+    .form-container input, 
+    .form-container select,
+    .form-container button {
+        width: 100%; /* Ocupa el ancho completo */
+        box-sizing: border-box; /* Asegura que el padding no cause desbordamiento */
+        margin-bottom: 10px;
+    }
+
+    /* Hace que la tabla de productos sea desplazable horizontalmente */
+    .table-container {
+        overflow-x: auto;
+    }
+}
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;

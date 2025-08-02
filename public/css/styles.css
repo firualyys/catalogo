@@ -1,4 +1,20 @@
 /* Estilos generales */
+/* Estilos para pantallas más pequeñas (móviles) */
+@media (max-width: 768px) {
+    
+    /* ... otros estilos que ya tienes ... */
+
+    .filtros {
+        flex-direction: column; /* Apila el buscador y las categorías */
+        gap: 15px; /* Añade espacio entre los elementos */
+        padding: 0 15px; /* Añade espacio lateral */
+    }
+
+    #searchInput, #categoriaSelect {
+        width: 100%; /* Hace que ocupen todo el ancho disponible */
+    }
+
+}
 :root {
     --color-principal: #007bff;
     --color-secundario: #f8f9fa;
