@@ -41,18 +41,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="product-precio1">Precio 1</label>
-                    <input type="number" id="product-precio1" step="0.01" required>
+                    <label for="product-precio-original">Precio Original</label>
+                    <input type="number" id="product-precio-original" step="0.01" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="product-precio2">Precio 2</label>
-                    <input type="number" id="product-precio2" step="0.01" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="product-precio3">Precio 3</label>
-                    <input type="number" id="product-precio3" step="0.01" required>
+                    <label for="product-precio-descuento">Precio con Descuento</label>
+                    <input type="number" id="product-precio-descuento" step="0.01">
                 </div>
 
                 <div class="form-group">
@@ -76,31 +71,17 @@
                     <th>ID</th>
                     <th>Modelo</th>
                     <th>Marca</th>
-                    <th>Precio 1</th>
+                    <th>Precio</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                </tbody>
+            </tbody>
         </table>
     </div>
     
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script>
-        // Tus credenciales de configuración de Firebase
-        const firebaseConfig = {
-          apiKey: "AIzaSyAwJUjgCO1UNwo9V_gIdI8_7wlO-rYxjJI",
-          authDomain: "mi-catalogo-tienda.firebaseapp.com",
-          projectId: "mi-catalogo-tienda",
-          storageBucket: "mi-catalogo-tienda.firebasestorage.app",
-          messagingSenderId: "187610778929",
-          appId: "1:187610778929:web:c6b3d11a969432d7657410"
-        };
-
-        // Inicializa Firebase
-        firebase.initializeApp(firebaseConfig);
-    </script>
     
     <script type="module" src="js/admin.js"></script>
 </body>

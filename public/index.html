@@ -6,23 +6,48 @@
     <title>Catálogo de Productos - EROHA EIRL</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ¡CORRECCIÓN IMPORTANTE! Ten cuidado con las rutas de tus archivos CSS -->
+    <link rel="stylesheet" href="css/styles-modal-contrasena.css">
 </head>
 <body>
     <header>
         <h1>EROHA EIRL</h1>
         <button id="admin-button" class="admin-button">Administrar</button>
     </header>
+    
+    <!-- El contenedor principal que usará Flexbox para el layout -->
+    <main class="catalogo-layout">
+        <!-- Panel de Filtros completo -->
+        <aside class="filtro-panel">
+            <h3>Filtrar por</h3>
+            
+            <!-- Campo de búsqueda -->
+            <div class="filtro-grupo">
+                <input type="text" id="searchInput" placeholder="Buscar productos..." class="search-input-filtro">
+            </div>
 
-    <main>
-        <div class="filtros">
-            <input type="text" id="searchInput" placeholder="Buscar productos...">
-            <select id="categoriaSelect">
-                <option value="all">Todas las categorías</option>
-            </select>
-        </div>
+            <!-- Selector de categorías (ahora en el panel lateral) -->
+            <div class="filtro-grupo">
+                <h4>Categorías</h4>
+                <select id="categoriaSelect">
+                    <option value="all">Todas las categorías</option>
+                </select>
+                <!-- Aquí puedes añadir checkboxes de categorías si los usas en el futuro -->
+            </div>
 
-        <section id="catalogo-container"></section>
+            <!-- Aquí irían tus filtros de Marcas y Rangos de precios -->
+            <div class="filtro-grupo">
+                <h4>Marcas</h4>
+                <!-- Contenido de los filtros de marca -->
+            </div>
+            <div class="filtro-grupo">
+                <h4>Rango de precios</h4>
+                <!-- Contenido de los filtros de rango de precios -->
+            </div>
+        </aside>
+
+        <!-- Sección de productos -->
+        <section id="catalogo-container" class="productos-container"></section>
     </main>
     
     <footer>
@@ -51,13 +76,13 @@
         </div>
     </footer>
 
+    <!-- Modales -->
     <div id="product-modal" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
             <div id="modal-body" class="modal-body"></div>
         </div>
     </div>
-
     <div id="password-modal" class="password-modal">
         <div class="password-modal-content">
             <h3>Ingresar Contraseña</h3>
@@ -66,20 +91,9 @@
         </div>
     </div>
 
+    <!-- Scripts -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script>
-        // Tus credenciales de configuración de Firebase
-        const firebaseConfig = {
-          apiKey: "AIzaSyAwJUjgCO1UNwo9V_gIdI8_7wlO-rYxjJI",
-          authDomain: "mi-catalogo-tienda.firebaseapp.com",
-          projectId: "mi-catalogo-tienda",
-          storageBucket: "mi-catalogo-tienda.firebasestorage.app",
-          messagingSenderId: "187610778929",
-          appId: "1:187610778929:web:c6b3d11a969432d7657410"
-        };
-        firebase.initializeApp(firebaseConfig);
-    </script>
     <script type="module" src="js/main-app.js"></script>
 </body>
 </html>

@@ -1,0 +1,134 @@
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 200;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 700px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 10px;
+}
+
+.detalle-producto {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.detalle-producto img {
+    max-width: 100%;
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.detalle-info {
+    flex: 1;
+}
+
+.detalle-info h2 {
+    margin-top: 0;
+    font-size: 2rem;
+}
+
+.detalle-precios ul {
+    list-style: none;
+    padding: 0;
+}
+
+.detalle-precios li {
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+}
+
+.detalle-precios li strong {
+    color: var(--color-principal);
+}
+/* Estilo para el precio original tachado */
+.precio-original {
+    font-size: 1.2rem;
+    color: #999;
+    text-decoration: line-through;
+    margin-bottom: 0.5rem;
+}
+
+/* Estilo para el precio de oferta */
+.precio-descuento {
+    font-size: 1.8rem;
+    color: #e64a19; /* Color de acento rojo */
+    font-weight: bold;
+}
+
+/* Estilo para el badge de descuento */
+.descuento-badge {
+    position: absolute; /* O relativo al contenedor que quieras */
+    top: 2rem;
+    right: 2rem;
+    background-color: #e64a19;
+    color: white;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    z-index: 10;
+}
+
+/* Asegura que el contenedor principal del detalle tenga posicionamiento relativo */
+.detalle-producto {
+    position: relative; 
+    /* ... el resto de tus estilos para el detalle-producto ... */
+}
+
+/* Estilo del badge de descuento en el modal */
+.descuento-modal-badge {
+    position: absolute;
+    top: 5px; /* Reducimos el espacio desde la parte superior para pegarlo más */
+    left: 5px; /* Reducimos el espacio desde la izquierda para pegarlo más */
+    background-color: #e64a19; 
+    color: white;
+    font-weight: bold;
+    padding: 8px 12px; /* Aumentamos el padding para hacerlo más grande */
+    border-radius: 4px;
+    font-size: 1.1rem; /* Aumentamos el tamaño de la fuente */
+    z-index: 10;
+}

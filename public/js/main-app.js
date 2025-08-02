@@ -1,5 +1,16 @@
 // public/js/main-app.js
 
+
+// Tus credenciales de configuración de Firebase
+const firebaseConfig = {
+          apiKey: "AIzaSyAwJUjgCO1UNwo9V_gIdI8_7wlO-rYxjJI",
+          authDomain: "mi-catalogo-tienda.firebaseapp.com",
+          projectId: "mi-catalogo-tienda",
+          storageBucket: "mi-catalogo-tienda.firebasestorage.app",
+          messagingSenderId: "187610778929",
+          appId: "1:187610778929:web:c6b3d11a969432d7657410"
+        };
+        firebase.initializeApp(firebaseConfig);
 // Conexión a Firebase
 const db = firebase.firestore();
 const productosRef = db.collection('productos');
@@ -24,15 +35,36 @@ let productos = []; // Almacenará los productos de Firebase
 const crearTarjetaProducto = (producto) => {
     const card = document.createElement('div');
     card.classList.add('producto-card');
+
+    let precioHTML = '';
+    let descuentoBadge = '';
+
+    // Lógica para mostrar el descuento si aplica
+    if (producto.precioDescuento && producto.precioDescuento < producto.precioOriginal) {
+        const descuentoPorcentaje = Math.round(
+            (1 - producto.precioDescuento / producto.precioOriginal) * 100
+        );
+        descuentoBadge = `<div class="descuento-badge">-${descuentoPorcentaje}%</div>`;
+        precioHTML = `
+            <p class="precio-original">S/. ${producto.precioOriginal.toFixed(2)}</p>
+            <p class="precio-descuento">S/. ${producto.precioDescuento.toFixed(2)}</p>
+        `;
+    } else {
+        // Si no hay descuento, solo muestra el precio normal
+        precioHTML = `<p class="precio">S/. ${producto.precio1.toFixed(2)}</p>`;
+    }
+
     card.innerHTML = `
         <img src="${producto.imagen}" alt="${producto.modelo}">
+        ${descuentoBadge}
         <div class="producto-info">
             <h3>${producto.marca} ${producto.modelo}</h3>
             <p>${producto.descripcion.substring(0, 50)}...</p>
-            <p class="precio">S/. ${producto.precio1.toFixed(2)}</p>
+            ${precioHTML}
             <button class="boton-detalle" data-id="${producto.id}">Ver detalles</button>
         </div>
     `;
+
     return card;
 };
 
@@ -91,27 +123,46 @@ catalogoContainer.addEventListener('click', async (e) => {
         const productId = e.target.dataset.id;
         const producto = productos.find(p => p.id === productId);
 
+        let detallePreciosHTML = '';
+        let descuentoModalBadge = '';
+        const tieneDescuento = producto.precioDescuento && producto.precioDescuento < producto.precioOriginal;
+
+        if (tieneDescuento) {
+            const descuentoPorcentaje = Math.round(
+                (1 - producto.precioDescuento / producto.precioOriginal) * 100
+            );
+            descuentoModalBadge = `<div class="descuento-modal-badge">-${descuentoPorcentaje}%</div>`;
+            detallePreciosHTML = `
+                <p>
+                    <strong>Precio anterior:</strong> <span class="precio-original">S/. ${producto.precioOriginal.toFixed(2)}</span><br>
+                    <strong>Precio con descuento:</strong> <span class="precio-descuento"><br>S/. ${producto.precioDescuento.toFixed(2)}</br></span>
+                </p>
+            `;
+        } else if (producto.precioOriginal) {
+            detallePreciosHTML = `<p><strong>Precio:</strong> <span class="precio-descuento">S/. ${producto.precioOriginal.toFixed(2)}</span></p>`;
+        } else {
+            detallePreciosHTML = `<p>Precio no disponible</p>`;
+        }
+
         modalBody.innerHTML = `
             <div class="detalle-producto">
+                ${descuentoModalBadge}
                 <img src="${producto.imagen}" alt="${producto.modelo}">
                 <div class="detalle-info">
                     <h2>${producto.marca} ${producto.modelo}</h2>
                     <p><strong>Categoría:</strong> ${producto.categoria}</p>
                     <p>${producto.descripcion}</p>
                     <div class="detalle-precios">
-                        <p><strong>Precios disponibles:</strong></p>
-                        <ul>
-                            <li>Precio 1: <strong>S/. ${producto.precio1.toFixed(2)}</strong></li>
-                            <li>Precio 2: <strong>S/. ${producto.precio2.toFixed(2)}</strong></li>
-                            <li>Precio 3: <strong>S/. ${producto.precio3.toFixed(2)}</strong></li>
-                        </ul>
+                        ${detallePreciosHTML}
                     </div>
                 </div>
             </div>
         `;
+
         productModal.style.display = 'flex';
     }
 });
+
 
 closeButton.addEventListener('click', () => {
     productModal.style.display = 'none';
@@ -130,7 +181,7 @@ adminButton.addEventListener('click', () => {
 
 passwordSubmit.addEventListener('click', () => {
     const password = passwordInput.value;
-    const adminPassword = 'admin123'; // Contraseña de ejemplo
+    const adminPassword = 'admin123'; // Contraseña 
 
     if (password === adminPassword) {
         window.location.href = 'admin.html';

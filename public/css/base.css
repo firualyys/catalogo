@@ -1,0 +1,54 @@
+/* Variables CSS */
+:root {
+    --color-principal: #007bff;
+    --color-secundario: #f8f9fa;
+    --color-texto: #333;
+    --color-fondo: #fff;
+    --color-borde: #dee2e6;
+}
+
+/* Estilos del body y main */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-secundario);
+    color: var(--color-texto);
+}
+
+header {
+    background-color: var(--color-principal);
+    color: var(--color-fondo);
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.admin-button {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    border: 1px solid var(--color-borde);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+.admin-button:hover {
+    background-color: var(--color-borde);
+    color: var(--color-texto);
+}

@@ -1,3 +1,15 @@
+        // Tus credenciales de configuración de Firebase
+        const firebaseConfig = {
+          apiKey: "AIzaSyAwJUjgCO1UNwo9V_gIdI8_7wlO-rYxjJI",
+          authDomain: "mi-catalogo-tienda.firebaseapp.com",
+          projectId: "mi-catalogo-tienda",
+          storageBucket: "mi-catalogo-tienda.firebasestorage.app",
+          messagingSenderId: "187610778929",
+          appId: "1:187610778929:web:c6b3d11a969432d7657410"
+        };
+
+        // Inicializa Firebase
+        firebase.initializeApp(firebaseConfig);
 document.addEventListener('DOMContentLoaded', () => {
     // Inicializamos Firestore
     const db = firebase.firestore();
@@ -14,9 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const productMarcaInput = document.getElementById('product-marca');
     const productModeloInput = document.getElementById('product-modelo');
     const productDescripcionInput = document.getElementById('product-descripcion');
-    const productPrecio1Input = document.getElementById('product-precio1');
-    const productPrecio2Input = document.getElementById('product-precio2');
-    const productPrecio3Input = document.getElementById('product-precio3');
+    const productPrecioOriginalInput = document.getElementById('product-precio-original');
+    const productPrecioDescuentoInput = document.getElementById('product-precio-descuento');
     const productImagenInput = document.getElementById('product-imagen');
     
     // Función para renderizar la tabla de productos (versión con Firebase)
@@ -25,12 +36,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const snapshot = await productosRef.get();
         snapshot.forEach(doc => {
             const producto = doc.data();
+
+            // Lógica para mostrar el precio de descuento si existe
+            let precioMostrado = producto.precioOriginal;
+            if (producto.precioDescuento && producto.precioDescuento < producto.precioOriginal) {
+                precioMostrado = producto.precioDescuento;
+            }
+
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${doc.id}</td>
                 <td>${producto.modelo}</td>
                 <td>${producto.marca}</td>
-                <td>S/. ${producto.precio1.toFixed(2)}</td>
+                <td>S/. ${precioMostrado.toFixed(2)}</td>
                 <td class="admin-acciones">
                     <button class="editar-btn" data-id="${doc.id}">Editar</button>
                     <button class="eliminar-btn" data-id="${doc.id}">Eliminar</button>
@@ -40,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+
     // Función para cargar los datos de un producto en el formulario
     const cargarDatosEnFormulario = (producto) => {
         productIdInput.value = producto.id;
@@ -47,9 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
         productMarcaInput.value = producto.marca;
         productModeloInput.value = producto.modelo;
         productDescripcionInput.value = producto.descripcion;
-        productPrecio1Input.value = producto.precio1;
-        productPrecio2Input.value = producto.precio2;
-        productPrecio3Input.value = producto.precio3;
+        productPrecioOriginalInput.value = producto.precioOriginal;
+        productPrecioDescuentoInput.value = producto.precioDescuento;
         productImagenInput.value = producto.imagen;
         imagePreview.innerHTML = `<img src="${producto.imagen}" alt="Vista previa de la imagen" style="max-width: 100%; height: auto; display: block; border-radius: 8px;">`;
         submitButton.textContent = 'Actualizar Producto';
@@ -75,9 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
             marca: productMarcaInput.value,
             modelo: productModeloInput.value,
             descripcion: productDescripcionInput.value,
-            precio1: parseFloat(productPrecio1Input.value),
-            precio2: parseFloat(productPrecio2Input.value),
-            precio3: parseFloat(productPrecio3Input.value),
+            precioOriginal: parseFloat(productPrecioOriginalInput.value),
+            precioDescuento: parseFloat(productPrecioDescuentoInput.value),
             imagen: productImagenInput.value
         };
 
