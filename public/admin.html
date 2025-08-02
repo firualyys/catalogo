@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - EROHA EIRL</title>
+    <link rel="stylesheet" href="css/styles-admin.css">
+</head>
+<body>
+
+    <header>
+        <h1>Panel de Administración</h1>
+    </header>
+
+    <div class="admin-container">
+        <h2>Gestión de Productos</h2>
+
+        <div class="form-container">
+            <h3>Editar/Agregar Producto</h3>
+            <form id="product-form">
+                <input type="hidden" id="product-id">
+                
+                <div class="form-group">
+                    <label for="product-categoria">Categoría</label>
+                    <input type="text" id="product-categoria" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="product-marca">Marca</label>
+                    <input type="text" id="product-marca" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="product-modelo">Modelo</label>
+                    <input type="text" id="product-modelo" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="product-descripcion">Descripción</label>
+                    <textarea id="product-descripcion" rows="3" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="product-precio1">Precio 1</label>
+                    <input type="number" id="product-precio1" step="0.01" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="product-precio2">Precio 2</label>
+                    <input type="number" id="product-precio2" step="0.01" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="product-precio3">Precio 3</label>
+                    <input type="number" id="product-precio3" step="0.01" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="product-imagen">URL de la Imagen</label>
+                    <input type="url" id="product-imagen" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="product-imagen-file">O Subir una imagen</label>
+                    <input type="file" id="product-imagen-file" accept="image/*">
+                </div>
+                <div id="image-preview" style="margin-bottom: 1em;"></div>
+
+                <button type="submit" id="submit-button">Agregar Producto</button>
+            </form>
+        </div>
+
+        <table id="product-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Modelo</th>
+                    <th>Marca</th>
+                    <th>Precio 1</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
+    </div>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script>
+        // Tus credenciales de configuración de Firebase
+        const firebaseConfig = {
+          apiKey: "AIzaSyAwJUjgCO1UNwo9V_gIdI8_7wlO-rYxjJI",
+          authDomain: "mi-catalogo-tienda.firebaseapp.com",
+          projectId: "mi-catalogo-tienda",
+          storageBucket: "mi-catalogo-tienda.firebasestorage.app",
+          messagingSenderId: "187610778929",
+          appId: "1:187610778929:web:c6b3d11a969432d7657410"
+        };
+
+        // Inicializa Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    
+    <script type="module" src="js/admin.js"></script>
+</body>
+</html>

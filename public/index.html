@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Productos - EROHA EIRL</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>EROHA EIRL</h1>
+        <button id="admin-button" class="admin-button">Administrar</button>
+    </header>
+
+    <main>
+        <div class="filtros">
+            <input type="text" id="searchInput" placeholder="Buscar productos...">
+            <select id="categoriaSelect">
+                <option value="all">Todas las categorías</option>
+            </select>
+        </div>
+
+        <section id="catalogo-container"></section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h4>Acerca de Nosotros</h4>
+                <p>EROHA EIRL es una empresa dedicada a la venta de electrodomésticos de alta calidad, ofreciendo una amplia gama de productos para el hogar a precios competitivos.</p>
+            </div>
+            <div class="footer-section contact">
+                <h4>Contacto</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Dirección: Av. Principal 123, Juliaca, Perú</p>
+                <p><i class="fas fa-phone"></i> Teléfono: +51 987 654 321</p>
+                <p><i class="fas fa-envelope"></i> Email: contacto@eroha.com</p>
+            </div>
+            <div class="footer-section social">
+                <h4>Síguenos</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 EROHA EIRL. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div id="modal-body" class="modal-body"></div>
+        </div>
+    </div>
+
+    <div id="password-modal" class="password-modal">
+        <div class="password-modal-content">
+            <h3>Ingresar Contraseña</h3>
+            <input type="password" id="password-input" placeholder="Contraseña de administrador">
+            <button id="password-submit">Entrar</button>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script>
+        // Tus credenciales de configuración de Firebase
+        const firebaseConfig = {
+          apiKey: "AIzaSyAwJUjgCO1UNwo9V_gIdI8_7wlO-rYxjJI",
+          authDomain: "mi-catalogo-tienda.firebaseapp.com",
+          projectId: "mi-catalogo-tienda",
+          storageBucket: "mi-catalogo-tienda.firebasestorage.app",
+          messagingSenderId: "187610778929",
+          appId: "1:187610778929:web:c6b3d11a969432d7657410"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script type="module" src="js/main-app.js"></script>
+</body>
+</html>
