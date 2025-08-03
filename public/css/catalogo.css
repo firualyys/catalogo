@@ -168,3 +168,148 @@
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
 }
+
+/*
+ * Sección de estilos exclusiva para el panel de filtros.
+ */
+
+/* Contenedor principal del panel de filtros */
+.filtro-panel {
+    flex-shrink: 0;
+    width: 280px;
+    padding: 1.5rem;
+    background-color: #ffffff; /* Fondo blanco para un aspecto limpio */
+    border-radius: 12px; /* Bordes más redondeados y suaves */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada y moderna */
+    height: fit-content;
+    position: sticky;
+    top: 2rem;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.filtro-panel:hover {
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15); /* Efecto de elevación al pasar el mouse */
+}
+
+.filtro-panel h3 {
+    font-size: 1.6rem;
+    color: #2c3e50; /* Título principal */
+    margin-top: 0;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 0.8rem;
+    font-weight: 700; /* Mayor peso para el título */
+}
+
+.filtro-grupo {
+    margin-bottom: 2rem; /* Más espacio entre los grupos de filtros */
+}
+
+.filtro-grupo h4 {
+    font-size: 1.1rem;
+    color: #34495e;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Estilos para el campo de búsqueda */
+.search-input-filtro-container {
+    position: relative; /* Contenedor para posicionar el ícono */
+    margin-bottom: 1.5rem;
+}
+
+.search-input-filtro {
+    width: 100%;
+    padding: 12px 12px 12px 40px; /* Aumentar el padding izquierdo para el ícono */
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.search-input-filtro:focus {
+    outline: none;
+    border-color: #3498db; /* Color de acento al enfocar */
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #95a5a6; /* Color del ícono */
+    font-size: 1.1rem;
+}
+
+/* Estilos para las etiquetas y los inputs de los filtros */
+.filtro-grupo label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #444;
+    user-select: none;
+    transition: color 0.2s ease;
+}
+
+.filtro-grupo label:hover {
+    color: #3498db;
+}
+
+.filtro-grupo input[type="checkbox"],
+.filtro-grupo input[type="radio"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filtro-grupo input[type="radio"] {
+    border-radius: 50%;
+}
+
+.filtro-grupo input[type="checkbox"]:checked,
+.filtro-grupo input[type="radio"]:checked {
+    border-color: #3498db;
+    background-color: #3498db;
+}
+
+.filtro-grupo input[type="checkbox"]:checked::before {
+    content: '✓';
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+}
+
+.filtro-grupo input[type="radio"]:checked::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Media Queries para la sección de filtros */
+@media (max-width: 768px) {
+    .filtro-panel {
+        width: 100%;
+        position: static;
+    }
+}

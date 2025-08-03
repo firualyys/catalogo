@@ -6,8 +6,6 @@
     <title>Catálogo de Productos - EROHA EIRL</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- ¡CORRECCIÓN IMPORTANTE! Ten cuidado con las rutas de tus archivos CSS -->
-    <link rel="stylesheet" href="css/styles-modal-contrasena.css">
 </head>
 <body>
     <header>
@@ -20,29 +18,31 @@
         <!-- Panel de Filtros completo -->
         <aside class="filtro-panel">
             <h3>Filtrar por</h3>
-            
-            <!-- Campo de búsqueda -->
             <div class="filtro-grupo">
-                <input type="text" id="searchInput" placeholder="Buscar productos..." class="search-input-filtro">
+            <input type="text" id="searchInput" placeholder="Buscar productos..." class="search-input-filtro">
             </div>
-
-            <!-- Selector de categorías (ahora en el panel lateral) -->
+            
             <div class="filtro-grupo">
                 <h4>Categorías</h4>
-                <select id="categoriaSelect">
-                    <option value="all">Todas las categorías</option>
-                </select>
-                <!-- Aquí puedes añadir checkboxes de categorías si los usas en el futuro -->
+                <div id="categorias-filtro">
+                    </div>
             </div>
 
-            <!-- Aquí irían tus filtros de Marcas y Rangos de precios -->
             <div class="filtro-grupo">
                 <h4>Marcas</h4>
-                <!-- Contenido de los filtros de marca -->
+                <div id="marcas-filtro">
+                    </div>
             </div>
+
             <div class="filtro-grupo">
                 <h4>Rango de precios</h4>
-                <!-- Contenido de los filtros de rango de precios -->
+                <div id="precios-filtro">
+                    <label><input type="radio" name="rango-precio" value="all" checked> Todos los precios</label>
+                    <label><input type="radio" name="rango-precio" value="0-500"> Menos de S/500</label>
+                    <label><input type="radio" name="rango-precio" value="500-1000"> S/500 - S/1000</label>
+                    <label><input type="radio" name="rango-precio" value="1000-2000"> S/1000 - S/2000</label>
+                    <label><input type="radio" name="rango-precio" value="2000-max"> Más de S/2000</label>
+                </div>
             </div>
         </aside>
 
