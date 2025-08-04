@@ -1,126 +1,71 @@
-/* Estilos específicos para la página de administración */
-/* Estilos responsivos para pantallas de hasta 768px (móviles y tablets) */
-@media (max-width: 768px) {
-    
-    /* Ajusta el encabezado y el título */
-    .admin-header h1 {
-        font-size: 1.5rem;
-    }
-
-    /* Hace que los contenedores se apilen verticalmente */
-    .admin-content {
-        flex-direction: column;
-    }
-
-    /* Estilos para el formulario de agregar/editar productos */
-    .form-container {
-        padding: 15px;
-    }
-
-    .form-container input, 
-    .form-container select,
-    .form-container button {
-        width: 100%; /* Ocupa el ancho completo */
-        box-sizing: border-box; /* Asegura que el padding no cause desbordamiento */
-        margin-bottom: 10px;
-    }
-
-    /* Hace que la tabla de productos sea desplazable horizontalmente */
-    .table-container {
-        overflow-x: auto;
-    }
+.form-container {
+    padding: 2.5rem;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    margin-bottom: 2.5rem;
+    border: 1px solid #e5e7eb;
 }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        .admin-container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            text-align: center;
-            color: #007bff;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-            color: #555;
-        }
-        .admin-acciones {
-            display: flex;
-            gap: 5px;
-        }
-        .admin-acciones button {
-            padding: 5px 10px;
-            cursor: pointer;
-            border: none;
-            color: white;
-            border-radius: 4px;
-        }
-        .editar-btn {
-            background-color: #28a745;
-        }
-        .eliminar-btn {
-            background-color: #dc3545;
-        }
-        .form-container {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-        }
-        .form-container h3 {
-            text-align: center;
-            color: #007bff;
-        }
-        .form-container form {
-            display: grid;
-            gap: 15px;
-            grid-template-columns: 1fr 1fr;
-        }
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-        .form-group label {
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        .form-group input, .form-group textarea, .form-group select {
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .form-group button {
-            grid-column: span 2;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        input[type="number"]::-webkit-inner-spin-button, 
-        input[type="number"]::-webkit-outer-spin-button { 
-            -webkit-appearance: none;
-            margin: 0;
-        }
-        input[type="number"] {
-            -moz-appearance: textfield;
-            appearance: textfield;
-        }
+
+.form-container h3 {
+    text-align: center;
+    font-size: 1.5rem; 
+    font-weight: 600; 
+    color: #1f2937; 
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #e6e5eb; 
+    padding-bottom: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem; 
+}
+
+.form-group label {
+    font-size: 0.875rem;
+    font-weight: 600; 
+    color: #374151; 
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+    background-color: #f9fafb; 
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); 
+    background-color: #ffffff;
+}
+
+
+#submit-button {
+    background-color: #3b82f6; /* Color azul */
+    color: #ffffff;
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+#submit-button:hover {
+    background-color: #2563eb; 
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.15);
+}
+
+
+
