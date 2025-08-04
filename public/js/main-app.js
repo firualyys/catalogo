@@ -1,23 +1,9 @@
-// Este es el código JavaScript para la aplicación de catálogo.
-// Se encarga de la lógica de filtrado y la renderización de los productos.
+// js/main-app.js
+// Importa las funciones de Firestore que necesitas
+import { getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-// Configuración de Firebase (proporcionada por el usuario)
-const firebaseConfig = {
-    apiKey: "AIzaSyAwJUjgCO1UNwo9V_gIdI8_7wlO-rYxjJI",
-    authDomain: "mi-catalogo-tienda.firebaseapp.com",
-    projectId: "mi-catalogo-tienda",
-    storageBucket: "mi-catalogo-tienda.firebasestorage.app",
-    messagingSenderId: "187610778929",
-    appId: "1:187610778929:web:c6b3d11a969432d7657410"
-};
-
-// Inicializar Firebase y Firestore
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const productosRef = collection(db, 'productos');
+// Importa la base de datos y la referencia a la colección de productos desde tu archivo de inicialización.
+import { db, productosRef } from "./firebase-init.js";
 
 // Elementos del DOM
 const catalogoContainer = document.getElementById('catalogo-container');
