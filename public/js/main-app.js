@@ -204,7 +204,7 @@ if (catalogoContainer) {
                         <strong>Precio anterior:</strong> <span class="precio-original">S/. ${producto.precioOriginal.toFixed(2)}</span>
                     </p>
                     <p>
-                        <strong>Precio con descuento:</strong> <span class="precio-descuento">S/. ${producto.precioDescuento.toFixed(2)}</span>
+                        <strong>Precio con descuento:</strong> <span class="precio-descuento"><br>S/. ${producto.precioDescuento.toFixed(2)}</br></span>
                     </p>
                 `;
             } else if (producto.precioOriginal) {

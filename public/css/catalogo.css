@@ -1,189 +1,41 @@
-.filtros {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background-color: var(--color-fondo);
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+/* ================================================= */
+/* ==== LAYOUT PRINCIPAL DEL CATÁLOGO (GRID) ==== */
+/* ================================================= */
 
-.filtros input, .filtros select {
-    padding: 0.75rem;
-    border: 1px solid var(--color-borde);
-    border-radius: 5px;
-    font-size: 1rem;
-    flex-grow: 1;
-    width: 250px;
-}
-
-#catalogo-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    padding: 0 1rem;
-}
-
-.producto-card {
-    background-color: var(--color-fondo);
-    border: 1px solid var(--color-borde);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-}
-
-.producto-card:hover {
-    transform: translateY(-5px);
-}
-
-.producto-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.producto-info {
-    padding: 1.5rem;
-    text-align: left;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.producto-info h3 {
-    margin-top: 0;
-    font-size: 1.25rem;
-}
-
-.producto-info p {
-    margin: 0.5rem 0;
-    color: #666;
-}
-
-.producto-info .precio {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--color-principal);
-    margin: 1rem 0;
-}
-
-.boton-detalle {
-    background-color: var(--color-principal);
-    color: var(--color-fondo);
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    display: block;
-    margin-top: auto;
-    width: 100%;
-}
-
-.boton-detalle:hover {
-    background-color: #0056b3;
-}
-
-/* Media Query para la sección de filtros */
-@media (max-width: 768px) {
-    .filtros {
-        flex-direction: column;
-        gap: 15px;
-        padding: 0 15px;
-    }
-    #searchInput, #categoriaSelect {
-        width: 100%;
-    }
-}
-/* Estilos para el contenedor de la tarjeta de producto */
-.producto-card {
-    position: relative; /* Importante para posicionar el badge de descuento */
-    /* ... el resto de tus estilos para la tarjeta ... */
-}
-
-/* Badge de descuento */
-.descuento-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #e64a19; /* Color de acento rojo */
-    color: white;
-    font-weight: bold;
-    padding: 5px 8px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    z-index: 10;
-}
-
-/* Estilo para el precio original tachado */
-.precio-original {
-    font-size: 0.9rem;
-    color: #999;
-    text-decoration: line-through;
-    margin: 0;
-}
-
-/* Estilo para el precio de oferta */
-.precio-descuento {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: var(--color-principal); /* O un color de acento */
-    margin: 0;
-}
 /* Contenedor principal para el layout del catálogo */
 .catalogo-layout {
-    display: flex;
-    gap: 2rem; /* Espacio entre el panel de filtros y los productos */
-    padding: 2rem 0;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
+    padding: 2rem 1rem;
+    display: block; /* Por defecto, en móviles, los elementos se apilan */
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* Estilos para el panel de filtros */
-.filtro-panel {
-    flex-shrink: 0; /* Evita que el panel se encoja */
-    width: 250px;
-    padding: 1.5rem;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilos para el contenedor de productos */
+/* Contenedor de productos */
 .productos-container {
-    flex-grow: 1; /* Permite que el contenedor de productos ocupe el espacio restante */
-}
-
-/* Estilos para la cuadrícula de productos */
-.catalogo-grid {
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
+    /* Usa auto-fit para crear una cuadrícula flexible con columnas de mínimo 280px */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    box-sizing: border-box;
 }
 
-/*
- * Sección de estilos exclusiva para el panel de filtros.
- */
+/* ================================================= */
+/* ==== ESTILOS DEL PANEL DE FILTROS ==== */
+/* ================================================= */
 
-/* Contenedor principal del panel de filtros */
 .filtro-panel {
-    flex-shrink: 0;
-    width: 280px;
-    padding: 1.5rem;
-    background-color: #ffffff; /* Fondo blanco para un aspecto limpio */
-    border-radius: 12px; /* Bordes más redondeados y suaves */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada y moderna */
-    height: fit-content;
-    position: sticky;
-    top: 2rem;
+    /* Estilos de la versión más detallada */
+    background-color: var(--color-fondo);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-borde);
+    width: 100%;
+    margin-bottom: 2rem;
+    box-sizing: border-box;
     transition: box-shadow 0.3s ease-in-out;
 }
 
@@ -193,37 +45,36 @@
 
 .filtro-panel h3 {
     font-size: 1.6rem;
-    color: #2c3e50; /* Título principal */
+    color: var(--color-negro);
     margin-top: 0;
     margin-bottom: 1rem;
-    border-bottom: 2px solid #e0e0e0;
+    border-bottom: 2px solid var(--color-borde);
     padding-bottom: 0.8rem;
-    font-weight: 700; /* Mayor peso para el título */
+    font-weight: 700;
 }
 
 .filtro-grupo {
-    margin-bottom: 2rem; /* Más espacio entre los grupos de filtros */
+    margin-bottom: 2rem;
 }
 
 .filtro-grupo h4 {
     font-size: 1.1rem;
-    color: #34495e;
+    color: var(--color-negro);
     margin-bottom: 1rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
-/* Estilos para el campo de búsqueda */
 .search-input-filtro-container {
-    position: relative; /* Contenedor para posicionar el ícono */
+    position: relative;
     margin-bottom: 1.5rem;
 }
 
 .search-input-filtro {
     width: 100%;
-    padding: 12px 12px 12px 40px; /* Aumentar el padding izquierdo para el ícono */
-    border: 1px solid #e0e0e0;
+    padding: 12px 12px 12px 40px;
+    border: 1px solid var(--color-borde);
     border-radius: 8px;
     font-size: 1rem;
     box-sizing: border-box;
@@ -232,8 +83,8 @@
 
 .search-input-filtro:focus {
     outline: none;
-    border-color: #3498db; /* Color de acento al enfocar */
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    border-color: var(--color-principal);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
 
 .search-icon {
@@ -241,24 +92,23 @@
     top: 50%;
     left: 15px;
     transform: translateY(-50%);
-    color: #95a5a6; /* Color del ícono */
+    color: var(--color-texto-secundario);
     font-size: 1.1rem;
 }
 
-/* Estilos para las etiquetas y los inputs de los filtros */
 .filtro-grupo label {
     display: flex;
     align-items: center;
     margin-bottom: 0.75rem;
     cursor: pointer;
     font-size: 1rem;
-    color: #444;
+    color: var(--color-texto);
     user-select: none;
     transition: color 0.2s ease;
 }
 
 .filtro-grupo label:hover {
-    color: #3498db;
+    color: var(--color-principal);
 }
 
 .filtro-grupo input[type="checkbox"],
@@ -272,6 +122,7 @@
     position: relative;
     cursor: pointer;
     transition: all 0.2s ease;
+    accent-color: var(--color-principal);
 }
 
 .filtro-grupo input[type="radio"] {
@@ -280,8 +131,8 @@
 
 .filtro-grupo input[type="checkbox"]:checked,
 .filtro-grupo input[type="radio"]:checked {
-    border-color: #3498db;
-    background-color: #3498db;
+    border-color: var(--color-principal);
+    background-color: var(--color-principal);
 }
 
 .filtro-grupo input[type="checkbox"]:checked::before {
@@ -306,10 +157,154 @@
     transform: translate(-50%, -50%);
 }
 
-/* Media Queries para la sección de filtros */
-@media (max-width: 768px) {
+/* ================================================= */
+/* ==== ESTILOS DE LA TARJETA DE PRODUCTO ==== */
+/* ================================================= */
+
+.producto-card {
+    background-color: var(--color-fondo);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative; /* Para posicionar el badge de descuento */
+}
+
+.producto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.producto-card img {
+    /* Altura de la imagen aumentada para una tarjeta más larga */
+    height: 280px;
+    width: 100%;
+    /* `object-fit: cover` asegura que la imagen llene el espacio, recortando si es necesario */
+    object-fit: cover;
+    display: block;
+}
+
+.producto-info {
+    /* Aumento del padding para hacer la sección de información más alta */
+    padding: 2rem 1.5rem;
+    text-align: left;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.producto-info h3 {
+    margin-top: 0;
+    font-size: 1.25rem;
+    color: var(--color-negro);
+}
+
+.producto-info p {
+    margin: 0.5rem 0;
+    color: var(--color-texto-secundario);
+}
+
+.producto-info .precio {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-principal);
+    margin: 1rem 0;
+}
+
+.boton-detalle {
+    background-color: var(--color-principal);
+    color: var(--color-fondo);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: block;
+    margin-top: 1.5rem; /* Aumento del margen superior para separarlo más */
+    width: 100%;
+    text-align: center;
+}
+
+.boton-detalle:hover {
+    background-color: var(--color-principal-hover);
+    transform: translateY(-1px);
+}
+
+.descuento-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--color-rojo);
+    color: white;
+    font-weight: bold;
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    z-index: 10;
+}
+
+.precio-original {
+    font-size: 0.9rem;
+    color: var(--color-gris-medio);
+    text-decoration: line-through;
+    margin: 0;
+}
+
+.precio-descuento {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--color-rojo);
+    margin: 0;
+}
+/* ================================================= */
+/* ==== MEDIA QUERIES PARA RESPONSIVIDAD ==== */
+/* ================================================= */
+
+/* Tablet y superior: cambia el layout a dos columnas (filtros + productos) */
+@media (min-width: 768px) {
+    .catalogo-layout {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 2rem;
+        padding: 2.5rem 1.5rem;
+        align-items: start;
+    }
+
     .filtro-panel {
-        width: 100%;
-        position: static;
+        margin-bottom: 0;
+        position: sticky;
+        top: 2rem; /* Mantener los filtros visibles al hacer scroll */
+        height: fit-content;
+        max-height: calc(100vh - 4rem);
+        overflow-y: auto;
+    }
+
+    .productos-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+/* Desktop y superior: ajusta el layout del catálogo */
+@media (min-width: 1024px) {
+    .catalogo-layout {
+        grid-template-columns: 320px 1fr;
+        gap: 2.5rem;
+        padding: 2.5rem 2rem;
+    }
+
+    .productos-container {
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas en desktop */
+        gap: 1.75rem;
+    }
+
+    .producto-card img {
+        height: 220px;
     }
 }

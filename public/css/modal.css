@@ -1,3 +1,7 @@
+/* ================================================= */
+/* ==== ESTILOS DEL MODAL DE DETALLE DE PRODUCTO ==== */
+/* ================================================= */
+
 .modal {
     display: none;
     position: fixed;
@@ -15,10 +19,10 @@
 
 .modal-content {
     background-color: #fff;
-    margin: 10% auto;
-    padding: 2rem;
+    margin: 5% auto; 
+    padding: 1.5rem; 
     border-radius: 12px;
-    max-width: 700px;
+    max-width: 650px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: relative;
     animation: fadeIn 0.3s ease-out;
@@ -51,14 +55,21 @@
 
 .detalle-producto {
     display: flex;
-    gap: 2rem;
+    gap: 1rem; 
     flex-wrap: wrap;
     align-items: center;
+    position: relative;
+}
+
+/* Contenedor de la imagen */
+.detalle-imagen-container {
+    position: relative;
+    width: 50%;
+    max-width: 280px;
 }
 
 .detalle-producto img {
-    max-width: 100%;
-    width: 300px;
+    width: 100%;
     height: auto;
     border-radius: 8px;
 }
@@ -68,41 +79,63 @@
 }
 
 .detalle-info h2 {
-    margin-top: 0;
-    font-size: 2rem;
+    margin: 0 0 0.5rem; 
+    font-size: 1.8rem;
+}
+
+/* Estilo para las l\u00edneas de informaci\u00f3n como categor\u00eda y precio */
+.detalle-info p {
+    margin: 0 0 0.4rem; 
 }
 
 .detalle-precios ul {
     list-style: none;
     padding: 0;
+    margin-bottom: 0.5rem; 
 }
 
 .detalle-precios li {
-    font-size: 1.2rem;
-    padding: 0.5rem 0;
+    font-size: 1rem;
+    padding: 0.2rem 0; 
 }
 
 .detalle-precios li strong {
     color: var(--color-principal);
 }
+
 /* Estilo para el precio original tachado */
 .precio-original {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #999;
     text-decoration: line-through;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
 }
 
 /* Estilo para el precio de oferta */
 .precio-descuento {
-    font-size: 1.8rem;
-    color: #e64a19; /* Color de acento rojo */
+    font-size: 1.6rem; 
+    color: #e64a19;
     font-weight: bold;
 }
 
-/* Estilo para el badge de descuento */
+/* Estilo para el badge de descuento en el modal */
+.descuento-modal-badge {
+    /* Ajustado a un valor m\u00e1s peque\u00f1o para subir el badge */
+    position: absolute;
+    top: 5px; 
+    left: 8px;
+    background-color: #e64a19;
+    color: white;
+    font-weight: bold;
+    padding: 15px 20px;
+    border-radius: 4px;
+    font-size: 1rem;
+    z-index: 15;
+}
+
+/* La imagen de la tarjeta del producto, sin cambios */
 .descuento-badge {
-    position: absolute; /* O relativo al contenedor que quieras */
+    position: absolute;
     top: 2rem;
     right: 2rem;
     background-color: #e64a19;
@@ -110,25 +143,5 @@
     font-weight: bold;
     padding: 0.5rem 1rem;
     border-radius: 50px;
-    z-index: 10;
-}
-
-/* Asegura que el contenedor principal del detalle tenga posicionamiento relativo */
-.detalle-producto {
-    position: relative; 
-    /* ... el resto de tus estilos para el detalle-producto ... */
-}
-
-/* Estilo del badge de descuento en el modal */
-.descuento-modal-badge {
-    position: absolute;
-    top: 5px; /* Reducimos el espacio desde la parte superior para pegarlo más */
-    left: 5px; /* Reducimos el espacio desde la izquierda para pegarlo más */
-    background-color: #e64a19; 
-    color: white;
-    font-weight: bold;
-    padding: 8px 12px; /* Aumentamos el padding para hacerlo más grande */
-    border-radius: 4px;
-    font-size: 1.1rem; /* Aumentamos el tamaño de la fuente */
     z-index: 10;
 }

@@ -4,34 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo de Productos - EROHA EIRL</title>
+    <!-- Enlazamos con la nueva hoja de estilos -->
     <link rel="stylesheet" href="css/styles.css">
+    <!-- Usamos Font Awesome para los iconos de redes sociales y contacto -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Enlazamos con la fuente Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    
+    <!-- Header -->
     <header>
-        <h1>EROHA EIRL</h1>
+        <h1 class="text-2xl font-bold text-blue-800">EROHA EIRL</h1>
         <button id="admin-button" class="admin-button">Administrar</button>
     </header>
-    
+
     <!-- El contenedor principal que usará Flexbox para el layout -->
     <main class="catalogo-layout">
         <!-- Panel de Filtros completo -->
         <aside class="filtro-panel">
             <h3>Filtrar por</h3>
             <div class="filtro-grupo">
-            <input type="text" id="searchInput" placeholder="Buscar productos..." class="search-input-filtro">
+                <!-- Contenedor para el campo de b\u00fasqueda con \u00edcono -->
+                <div class="search-input-filtro-container">
+                    <input type="text" id="searchInput" placeholder="Buscar productos..." class="search-input-filtro">
+                    <!-- \u00cdcono de lupa de Font Awesome -->
+                    <i class="fas fa-search search-icon"></i>
+                </div>
             </div>
             
             <div class="filtro-grupo">
                 <h4>Categorías</h4>
                 <div id="categorias-filtro">
-                    </div>
+                    <!-- Los checkboxes de categorías se insertarán aquí con JS -->
+                </div>
             </div>
 
             <div class="filtro-grupo">
                 <h4>Marcas</h4>
                 <div id="marcas-filtro">
-                    </div>
+                    <!-- Los checkboxes de marcas se insertarán aquí con JS -->
+                </div>
             </div>
 
             <div class="filtro-grupo">
@@ -92,8 +107,9 @@
     </div>
 
     <!-- Scripts -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <!-- Scripts de Firebase. Nota: He actualizado las versiones a una más reciente para mayor compatibilidad -->
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js"></script>
     <script type="module" src="js/main-app.js"></script>
 </body>
 </html>

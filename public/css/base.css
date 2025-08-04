@@ -1,54 +1,141 @@
-/* Variables CSS */
+/* Variables CSS mejoradas */
 :root {
-    --color-principal: #007bff;
-    --color-secundario: #f8f9fa;
-    --color-texto: #333;
-    --color-fondo: #fff;
-    --color-borde: #dee2e6;
+    --color-principal: #2563eb;
+    --color-principal-hover: #1d4ed8;
+    --color-secundario: #f8fafc;
+    --color-texto: #1e293b;
+    --color-texto-secundario: #64748b;
+    --color-fondo: #ffffff;
+    --color-borde: #e2e8f0;
+    --color-negro: #0f172a;
+    --color-gris-claro: #f1f5f9;
+    --color-gris-medio: #6b7280;
+    --color-rojo: #ef4444;
+    --color-verde: #10b981;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
 }
 
 /* Estilos del body y main */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--color-secundario);
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
     color: var(--color-texto);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
 }
 
+main {
+    flex-grow: 1;
+}
+
+/* ================================================= */
+/* ==== ESTILOS DEL HEADER Y FOOTER ==== */
+/* ================================================= */
 header {
-    background-color: var(--color-principal);
+    background: linear-gradient(135deg, var(--color-principal) 0%, var(--color-principal-hover) 100%);
     color: var(--color-fondo);
     padding: 1.5rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-lg);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 header h1 {
     margin: 0;
-}
-
-main {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
 }
 
 .admin-button {
-    background-color: var(--color-fondo);
-    color: var(--color-texto);
-    border: 1px solid var(--color-borde);
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-fondo);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.625rem 1.25rem;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    text-decoration: none;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(10px);
 }
 
 .admin-button:hover {
-    background-color: var(--color-borde);
-    color: var(--color-texto);
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
 }
+
+footer {
+    background: linear-gradient(135deg, var(--color-negro) 0%, #1e293b 100%);
+    color: var(--color-fondo);
+    padding: 3rem 2rem 1.5rem;
+    margin-top: 3rem;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+}
+
+.footer-content h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    color: var(--color-fondo);
+}
+
+.footer-section p {
+    color: var(--color-gris-claro);
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-icons a {
+    color: var(--color-gris-claro);
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.social-icons a:hover {
+    color: var(--color-fondo);
+    transform: translateY(-2px);
+    background-color: var(--color-principal);
+}
+
+.footer-bottom {
+    text-align: center;
+    color: var(--color-gris-medio);
+    font-size: 0.875rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
