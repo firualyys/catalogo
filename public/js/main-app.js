@@ -186,11 +186,11 @@ if (catalogoContainer) {
                 );
                 descuentoModalBadge = `<div class="descuento-modal-badge">-${descuentoPorcentaje}%</div>`;
                 detallePreciosHTML = `
-                    <p>
+                    <p class="precio-line">
                         <strong>Precio anterior:</strong> <span class="precio-original">S/. ${producto.precioOriginal.toFixed(2)}</span>
                     </p>
-                    <p>
-                        <strong>Precio con descuento:</strong> <span class="precio-descuento"><br>S/. ${producto.precioDescuento.toFixed(2)}</br></span>
+                    <p class="precio-line">
+                        <strong>Precio con descuento:</strong> <span class="precio-descuento">S/. ${producto.precioDescuento.toFixed(2)}</span>
                     </p>
                 `;
             } else if (producto.precioOriginal) {
@@ -199,15 +199,22 @@ if (catalogoContainer) {
                 detallePreciosHTML = `<p>Precio no disponible</p>`;
             }
 
+            // Separamos la descripción por comas y la convertimos en una lista.
+            const descripcionArray = producto.descripcion.split(',').map(item => `<li>${item.trim()}</li>`).join('');
+
             if (modalBody) {
                 modalBody.innerHTML = `
                     <div class="detalle-producto">
-                        ${descuentoModalBadge}
-                        <img src="${producto.imagen}" alt="${producto.modelo}">
+                        <div class="detalle-header">
+                            ${descuentoModalBadge}
+                            <img src="${producto.imagen}" alt="${producto.modelo}">
+                        </div>
                         <div class="detalle-info">
                             <h2>${producto.marca} ${producto.modelo}</h2>
                             <p><strong>Categoría:</strong> ${producto.categoria}</p>
-                            <p>${producto.descripcion}</p>
+                            <div class="detalle-descripcion">
+                                <ol>${descripcionArray}</ol>
+                            </div>
                             <div class="detalle-precios">
                                 ${detallePreciosHTML}
                             </div>
