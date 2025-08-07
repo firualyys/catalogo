@@ -162,3 +162,51 @@
     height: 100%; 
     object-fit: contain; 
 }
+/* ================================================= */
+/* ===== ESTILOS PARA PANTALLAS PEQUEÑAS (MÓVIL) ===== */
+/* ================================================= */
+
+@media (max-width: 768px) {
+    .modal-content {
+        max-width: 95%;
+        margin: 10px;
+        padding: 1rem;
+    }
+
+    .detalle-producto {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .detalle-imagen-container {
+        width: 100%; 
+        max-width: none;
+    }
+
+    .detalle-header {
+        width: 100%;
+        height: auto;
+    }
+
+    .detalle-header img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .detalle-info {
+        
+        align-items: flex-start; 
+    }
+    
+
+    .detalle-info h2 {
+        width: 100%; 
+        text-align: center; 
+    }
+
+    .detalle-descripcion {
+        max-height: 150px;
+    }
+}
