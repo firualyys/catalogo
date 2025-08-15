@@ -1,9 +1,8 @@
-// js/main-app.js
-// Importa las funciones de Firestore que necesitas
 import { getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
 // Importa la base de datos y la referencia a la colección de productos desde tu archivo de inicialización.
 import { db, productosRef } from "./firebase-init.js";
+import { cargarCarrusel } from "./carrusel.js";
 
 // Elementos del DOM
 const catalogoContainer = document.getElementById('catalogo-container');
@@ -19,6 +18,8 @@ const passwordModal = document.getElementById('password-modal');
 const passwordInput = document.getElementById('password-input');
 const passwordSubmit = document.getElementById('password-submit');
 const passwordModalCloseButton = document.querySelector('.close-button-password');
+
+const numeroWhatsapp = '981963937'; // Número de WhatsApp para consultas
 
 // Variable global para almacenar los productos
 let productos = [];
@@ -158,6 +159,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Listeners para marcas y precios
         if (marcasFiltroContainer) marcasFiltroContainer.addEventListener('change', aplicarFiltros);
         if (preciosFiltroContainer) preciosFiltroContainer.addEventListener('change', aplicarFiltros);
+        await cargarCarrusel();
         
     } catch (error) {
         console.error("Error al obtener los productos:", error);
@@ -203,6 +205,7 @@ if (catalogoContainer) {
             const descripcionArray = producto.descripcion.split(',').map(item => `<li>${item.trim()}</li>`).join('');
 
             if (modalBody) {
+                // Aquí está la parte modificada. Se añade el div del botón de WhatsApp al final.
                 modalBody.innerHTML = `
                     <div class="detalle-producto">
                         <div class="detalle-header">
@@ -217,6 +220,12 @@ if (catalogoContainer) {
                             </div>
                             <div class="detalle-precios">
                                 ${detallePreciosHTML}
+                            </div>
+                            <div class="detalle-acciones">
+                                <a href="https://wa.me/${numeroWhatsapp}?text=Hola, estoy interesado en el producto: ${producto.marca} ${producto.modelo}. ¿Podrías darme más información?" 
+                                   target="_blank" class="boton-whatsapp">
+                                    <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+                                </a>
                             </div>
                         </div>
                     </div>

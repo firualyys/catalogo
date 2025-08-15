@@ -1,0 +1,127 @@
+/* Estilos para el contenedor principal del carrusel */
+.carousel-container {
+    width: 100%; /* Ahora ocupa todo el ancho de la pantalla */
+    margin: 40px 0; /* Centrar el carrusel en la página y darle un espacio */
+    border-radius: 0; /* Quitamos los bordes redondeados para un aspecto de ancho completo */
+    overflow: hidden; /* Oculta cualquier contenido que se salga de los bordes */
+    box-shadow: none; /* Quitamos la sombra para que se integre mejor con el fondo de la página */
+}
+
+/* Estilos para el título principal */
+.carousel-container h2 {
+    font-family: 'Poppins', sans-serif; /* Usa una fuente moderna y legible */
+    font-weight: 600; /* Un poco más de grosor para que destaque */
+    letter-spacing: 1px; /* Espaciado entre letras para un toque elegante */
+    color: #4a4a4a !important; /* Un gris oscuro en lugar de un color brillante */
+    margin-bottom: 2rem !important;
+}
+
+/* Estilos para el carrusel en sí, con un toque moderno */
+.modern-carousel {
+    background-color: #2563eb; /* Fondo de color azul para rellenar el espacio no cubierto por la imagen */
+}
+
+/* Asegura que las imágenes ocupen todo el ancho y no se deformen */
+.carousel-item img {
+    height: auto; /* La imagen se ajustará a su altura original */
+    max-height: 500px; /* La altura máxima evitará que la imagen sea demasiado alta */
+    object-fit: contain; /* La imagen se ajustará al contenedor sin ser cortada, dejando el fondo visible */
+    border-radius: 0; /* Quitamos los bordes redondeados también para las imágenes */
+}
+
+/* Estilos para el contenedor del texto (caption) */
+.carousel-caption {
+    background: rgba(255, 255, 255, 0.2); /* Fondo semitransparente blanco */
+    backdrop-filter: blur(10px); /* Efecto de desenfoque para que el texto sea más legible */
+    border-radius: 10px;
+    padding: 15px 25px;
+    position: absolute;
+    /* Ajustes para centrar verticalmente, ahora con la leyenda más abajo */
+    bottom: 5%;
+    /* Centrado horizontal */
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%;
+    text-align: center;
+    color: #fff; /* Color de texto blanco para contraste */
+}
+
+/* Estilos para el título dentro de la leyenda */
+.carousel-caption h5 {
+    font-family: 'Playfair Display', serif; /* Una fuente elegante para el título */
+    font-size: 1.25rem; /* Reducimos el tamaño del título */
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para que se lea mejor */
+    margin-bottom: 0.5rem;
+}
+
+/* Estilos para la descripción */
+.carousel-caption p {
+    font-family: 'Lato', sans-serif; /* Una fuente simple y legible para la descripción */
+    font-size: 0.9rem; /* Reducimos el tamaño de la descripción */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    margin: 0;
+}
+
+/* Estilos para las flechas de navegación */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-image: none; /* Quitamos el icono predeterminado de Bootstrap */
+    width: 30px;
+    height: 30px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    opacity: 0.8;
+    transition: all 0.3s ease; /* Transición suave al pasar el cursor */
+}
+
+.carousel-control-prev-icon::after {
+    content: '❮'; /* Usamos un carácter más elegante para la flecha izquierda */
+    font-size: 20px;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.carousel-control-next-icon::after {
+    content: '❯'; /* Y para la flecha derecha */
+    font-size: 20px;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+    background-color: #fff;
+    border-color: #fff;
+    opacity: 1;
+}
+
+.carousel-control-prev:hover .carousel-control-prev-icon::after,
+.carousel-control-next:hover .carousel-control-next-icon::after {
+    color: #000;
+}
+
+/* Estilos para los indicadores (puntos) de la parte inferior */
+.carousel-indicators button {
+    background-color: #fff;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 5px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+    border: none;
+}
+
+.carousel-indicators .active {
+    opacity: 1;
+    background-color: #667eea; /* Color de tu elección para el indicador activo */
+}

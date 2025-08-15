@@ -162,6 +162,27 @@
     height: 100%; 
     object-fit: contain; 
 }
+
+.boton-whatsapp {
+    display: inline-block;
+    background-color: #25D366;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.boton-whatsapp:hover {
+    background-color: #128C7E;
+}
+
+/* Estilo para el icono */
+.boton-whatsapp i {
+    margin-right: 8px; /* Espacio entre el icono y el texto */
+    font-size: 1.2em; /* Tamaño del icono */
+}
 /* ================================================= */
 /* ===== ESTILOS PARA PANTALLAS PEQUEÑAS (MÓVIL) ===== */
 /* ================================================= */

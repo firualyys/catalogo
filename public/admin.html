@@ -89,8 +89,39 @@
                 </tbody>
             </table>
         </div>
+
+    <section class="admin-panel-section bg-white rounded-xl shadow-lg p-6 md:p-8 mt-8">
+        <h2 class="text-2xl font-semibold text-center text-blue-600 mb-6">Administrar Carrusel de Ofertas</h2>
+        <form id="form-carrusel" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <div class="form-group flex flex-col col-span-1 md:col-span-2">
+                <label for="slide-imagen" class="block text-sm font-medium text-gray-700 mb-1">URL de la Imagen:</label>
+                <input type="text" id="slide-imagen" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200" placeholder="https://ejemplo.com/imagen.jpg" required>
+            </div>
+            
+            <div class="form-group flex flex-col col-span-1">
+                <label for="slide-titulo" class="block text-sm font-medium text-gray-700 mb-1">Título:</label>
+                <input type="text" id="slide-titulo" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200" placeholder="Oferta Especial" required>
+            </div>
+            
+            <div class="form-group flex flex-col col-span-1">
+                <label for="slide-descripcion" class="block text-sm font-medium text-gray-700 mb-1">Descripción:</label>
+                <textarea id="slide-descripcion" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200" placeholder="Detalles de la oferta" required></textarea>
+            </div>
+            
+            <button type="submit" class="col-span-1 md:col-span-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">Agregar Slide</button>
+        </form>
+        
+        <hr class="my-6">
+
+        <h3 class="text-xl font-medium text-center text-gray-700 mb-4">Slides Actuales</h3>
+        <div id="lista-slides" class="lista-slides grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            </div>
+    </section>
     </div>
     
+
+
     <!-- Modal de confirmación para eliminar -->
     <div id="confirm-modal" class="fixed inset-0 z-50 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
         <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white text-center">

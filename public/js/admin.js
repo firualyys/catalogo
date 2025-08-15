@@ -32,7 +32,88 @@ document.addEventListener('DOMContentLoaded', () => {
     const productImagenInput = document.getElementById('product-imagen');
     const discountPercentageElement = document.getElementById('discount-percentage');
     
-    // Funci\u00f3n para calcular y mostrar el porcentaje de descuento
+    // Elementos y referencias para el carrusel
+    const carruselForm = document.getElementById('form-carrusel');
+    const carruselImageInput = document.getElementById('slide-imagen');
+    const carruselTitleInput = document.getElementById('slide-titulo');
+    const carruselDescriptionInput = document.getElementById('slide-descripcion');
+    const carruselListContainer = document.getElementById('lista-slides');
+
+    const carruselRef = db.collection('carrusel');
+
+    const renderizarCarruselAdmin = async () => {
+        // Vacia el contenedor antes de renderizar
+        carruselListContainer.innerHTML = ''; 
+
+        // Obtiene los slides de la base de datos
+        const snapshot = await carruselRef.get();
+        
+        // Itera sobre cada documento (slide)
+        snapshot.forEach(doc => {
+            const slide = doc.data();
+            const docId = doc.id;
+            
+            // Crea el elemento para el slide
+            const slideElement = document.createElement('div');
+            
+            // Aplica clases para la nueva estructura con más altura
+            slideElement.classList.add('bg-white', 'rounded-xl', 'shadow-lg', 'overflow-hidden', 'flex', 'flex-col', 'transform', 'hover:scale-105', 'transition-transform', 'duration-300');
+            
+            slideElement.innerHTML = `
+                <div class="h-56 bg-gray-200">
+                    <img src="${slide.imagenUrl}" alt="${slide.titulo}" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6 flex flex-col justify-between flex-grow">
+                    <div>
+                        <h4 class="text-xl font-bold text-gray-800">${slide.titulo}</h4>
+                        <p class="text-base text-gray-600 mt-2">${slide.descripcion}</p>
+                    </div>
+                    <button class="eliminar-carrusel-btn mt-6 w-full bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-lg transition duration-200" data-id="${docId}">Eliminar</button>
+                </div>
+            `;
+            
+            // Agrega el slide al contenedor
+            carruselListContainer.appendChild(slideElement);
+        });
+    };
+
+    //Manejar el envío del formulario del carrusel
+    carruselForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const nuevoSlide = {
+            imagenUrl: carruselImageInput.value,
+            titulo: carruselTitleInput.value,
+            descripcion: carruselDescriptionInput.value
+        };
+
+        try {
+            await carruselRef.add(nuevoSlide);
+            alert('Slide de carrusel agregado con éxito.');
+            carruselForm.reset();
+            renderizarCarruselAdmin();
+        } catch (error) {
+            console.error("Error al agregar el slide del carrusel: ", error);
+        }
+    });
+
+    // Manejar la eliminación de un slide
+    carruselListContainer.addEventListener('click', async (e) => {
+        const target = e.target;
+        if (target.classList.contains('eliminar-carrusel-btn')) {
+            const id = target.dataset.id;
+            if (confirm("¿Estás seguro de que quieres eliminar este slide?")) {
+                try {
+                    await carruselRef.doc(id).delete();
+                    renderizarCarruselAdmin();
+                } catch (error) {
+                    console.error("Error al eliminar el slide: ", error);
+                }
+            }
+        }
+    });   
+
+
+    // Funciiones para calcular y mostrar el porcentaje de descuento
     const calculateDiscount = () => {
         const precioOriginal = parseFloat(productPrecioOriginalInput.value);
         const precioDescuento = parseFloat(productPrecioDescuentoInput.value);
@@ -51,11 +132,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Event listeners para actualizar el c\u00e1lculo en tiempo real
+    // Event listeners para actualizar el calculo en tiempo real
     productPrecioOriginalInput.addEventListener('input', calculateDiscount);
     productPrecioDescuentoInput.addEventListener('input', calculateDiscount);
     
-    // Funci\u00f3n para renderizar la tabla de productos (versi\u00f3n con Firebase)
+    // funciones para renderizar la tabla de productos (version con Firebase)
     const renderizarTabla = async () => {
         productTableBody.innerHTML = '';
         const snapshot = await productosRef.get();
@@ -63,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const producto = doc.data();
             const docId = doc.id;
 
-            // L\u00f3gica para mostrar el precio de descuento si existe
+            // logica para mostrar el precio de descuento si existe
             let precioMostradoHTML = `<span class="text-gray-900">S/. ${parseFloat(producto.precioOriginal).toFixed(2)}</span>`;
             if (producto.precioDescuento && producto.precioDescuento < producto.precioOriginal) {
                 const discount = ((producto.precioOriginal - producto.precioDescuento) / producto.precioOriginal) * 100;
@@ -92,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Funci\u00f3n para cargar los datos de un producto en el formulario
+    // funcionamiento para cargar los datos de un producto en el formulario
     const cargarDatosEnFormulario = (producto) => {
         productIdInput.value = producto.id;
         productCategoriaInput.value = producto.categoria || '';
@@ -129,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Manejar el env\u00edo del formulario
+    // Manejar el enviado del formulario
     productForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
@@ -158,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Manejar los botones de acci\u00f3n (Editar y Eliminar)
+    // Manejar los botones de acciones (Editar y Eliminar)
     productTableBody.addEventListener('click', async (e) => {
         const target = e.target;
         const id = target.dataset.id;
@@ -195,6 +276,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Inicializar la tabla al cargar la p\u00e1gina
     renderizarTabla();
+    renderizarCarruselAdmin();
 });
